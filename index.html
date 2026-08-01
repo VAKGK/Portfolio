@@ -368,50 +368,45 @@ section h2 {
 #skills {
     background: var(--light-bg);
 }
-
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);   /* fixed 2 equal columns instead of auto-fit */
     gap: 2rem;
+    align-items: stretch;                     /* equal height cards in each row */
 }
-
 .skill-card {
     background: #ffffff;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
 }
-
 .skill-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
-
 .skill-header {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 1.2rem;
 }
-
 .skill-icon {
     font-size: 2rem;
 }
-
 .skill-card h3 {
     color:#393D7E;
     font-size: 1.4rem;
     font-weight: 600;
 }
-
 .skill-tags {
     display: flex;
-    flex-wrap: no wrap;
+    flex-wrap: wrap;          /* fixed typo: was "no wrap", now valid CSS */
     gap: 0.6rem;
     margin-bottom: 1rem;
 }
-
 .skill-tag {
     background: var(--light-bg);
     padding: 0.5rem 1rem;
@@ -420,47 +415,22 @@ section h2 {
     color: var(--text);
     font-weight: 500;
 }
-
 .skill-details {
-    margin-top: 1rem;
+    margin-top: auto;         /* pushes details to bottom so card bottoms align evenly */
     padding-top: 1rem;
     border-top: 1px solid var(--border);
     font-size: 0.90rem;
     color: var(--text);
     line-height: 1.6;
 }
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);  /* forces both columns to equal width */
-    gap: 24px;
-    align-items: stretch;  /* forces cards in same row to equal height */
-}
- 
-.skill-card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;       /* fills its grid column, no more/less */
-    box-sizing: border-box;
-    height: 100%;       /* stretches to match tallest card in row */
-}
- 
-.skill-details {
-    margin-top: auto;   /* pushes details line to bottom, keeps card bottoms aligned even if content length differs */
-}
- 
-/* Optional: if you want 4 equal columns in one row on wider screens instead of 2x2 */
-@media (min-width: 1024px) {
-    .skills-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
- 
-/* Responsive: stack to 1 column on mobile */
-@media (max-width: 600px) {
+
+/* Responsive: stack to 1 column on smaller screens */
+@media (max-width: 700px) {
     .skills-grid {
         grid-template-columns: 1fr;
     }
 }
+    
 /* Education Section */
 #education {
     background:  #f5f7fb;
